@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx webpack"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,9 @@
     "react-dom": "16.2.0"
   },
   "devDependencies": {
-    "webpack": "4.1.1"
+    "ts-loader": "4.0.1",
+    "typescript": "2.7.2",
+    "webpack": "4.1.1",
+    "webpack-cli": "2.0.12"
   }
 }
