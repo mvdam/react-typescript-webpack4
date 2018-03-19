@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/.bin/webpack-dev-server",
     "build": "npx webpack"
   },
   "repository": {
@@ -23,9 +24,14 @@
     "react-dom": "16.2.0"
   },
   "devDependencies": {
+    "@types/react": "16.0.40",
+    "@types/react-dom": "16.0.4",
+    "css-loader": "0.28.11",
+    "style-loader": "0.20.3",
     "ts-loader": "4.0.1",
     "typescript": "2.7.2",
     "webpack": "4.1.1",
-    "webpack-cli": "2.0.12"
+    "webpack-cli": "2.0.12",
+    "webpack-dev-server": "3.1.1"
   }
 }
