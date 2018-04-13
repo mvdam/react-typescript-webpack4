@@ -30,5 +30,21 @@ Findings;
 
 9. `npm install --save-dev css-loader style-loader`
 10. Added loader for CSS to webpack config
-11. `npm install webpack-dev-server --save-dev`
-12. ...
+11. We also need some 
+12. `npm install webpack-dev-server --save-dev`
+13. ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bootstrapping a React Typescript project. What are the differences between Webpack 4 and Parcel Bundler?

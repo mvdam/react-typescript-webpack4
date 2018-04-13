@@ -5,5 +5,5 @@ console.log(styles)
 
 export const App = () =>
     <div className={styles.app}>
-        Hello worldddddd!
+        Hello worldje this is a test!
     </div>

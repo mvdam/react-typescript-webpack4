@@ -61,4 +61,4 @@ typings/
 #custom
 .idea/
 .cache/
-dist/
+dist/\!index.html
