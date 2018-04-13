@@ -27,10 +27,12 @@
     "@types/react": "16.0.40",
     "@types/react-dom": "16.0.4",
     "css-loader": "0.28.11",
+    "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "mini-css-extract-plugin": "0.4.0",
     "style-loader": "0.20.3",
     "ts-loader": "4.0.1",
     "typescript": "2.7.2",
-    "webpack": "4.1.1",
+    "webpack": "4.4.1",
     "webpack-cli": "2.0.12",
     "webpack-dev-server": "3.1.1"
   }

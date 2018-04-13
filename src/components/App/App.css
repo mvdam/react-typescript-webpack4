@@ -1,4 +1,15 @@
+@font-face {
+    font-family: "futuraRegular";
+    src: url('/fonts/futuraBold.eot');
+    src: url('/fonts/futuraBold.eot?#iefix') format('eot'),
+    url('/fonts/futuraBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
 .app {
-    background-color: #333;
+    font-family: 'futuraRegular';
+    background-color: grey;
     color: white;
+    padding: 40px;
 }
