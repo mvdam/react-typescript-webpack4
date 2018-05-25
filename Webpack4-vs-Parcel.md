@@ -12,12 +12,12 @@ But things might have changed. We have two -new- kids on the block;
 * [Webpack 4](https://github.com/webpack/webpack), released on February 2018
 
 ### #0CJS
-There is quite some fuzz around 0CJS (Zero Configuration JavaScript) lately. Its all about great developer experience. This makes perfect sense for setting up build tools like Parcel or Webpack. For more advanced projects it may take huge effort to set it up correctly.
+There is quite some fuzz around 0CJS (Zero Configuration JavaScript) lately. It's all about great developer experience. This makes perfect sense for setting up build tools like Parcel or Webpack. For more advanced projects it may take huge effort to set it up correctly.
 
 Parcel claims to be a Blazing fast, zero configuration web application bundler. That all sounds nice, but does it really work out of the box? And how does Webpack 4 compares to Parcel?
 
 ### App requirements
-Before going any further, lets determine some requirements for our application. For a professional web application we should at least have support for the following technology.
+Before going any further, let's determine some requirements for our application. For a professional web application, we should at least have support for the following technology.
 - React
 - TypeScript (TSX)
 - Being able to import:
@@ -71,7 +71,7 @@ rules: [
 ]
 ```
 
-For our requirements we need to set up the file loaders for TypeScript, CSS modules, Fonts and images in a `webpack.config.js` file. Unfortunately we still need the `ExtractTextPlugin` to be able to bundle all the CSS to be able to bundle all the CSS of the application to a single file.
+For our requirements we need to set up the file loaders for TypeScript, CSS modules, Fonts and images in a `webpack.config.js` file. Unfortunately, we still need the `ExtractTextPlugin` to be able to bundle all the CSS to be able to bundle all the CSS of the application to a single file.
 
 `Configuring plugins`
 ```js
@@ -92,6 +92,8 @@ devServer: {
 }
 ```
 
+Even with the improved defaults of Webpack 4, setting up a new project is still quite a struggle. All the loaders and plugins are still needed and only a JavaScript loader is enabled by default. But this has also some benefits. You are very flexible in how you want to configure Webpack. And that is definitely the strength of Webpack.
+
 **What's awesome about Webpack 4?**
 * Almost anything is configurable
 * Large community
@@ -99,7 +101,7 @@ devServer: {
 * Well-funded & proven contributors
 * Improved default configuration
 
-**Whats nahsome about Webpack 4?**
+**What's nahsome about Webpack 4?**
 * Almost everything is configurable (and needs to be configured)
 * Initial setup is still quite intensive
 * Basic stuff like CSS modules doesn't work out of the box
@@ -114,11 +116,11 @@ devServer: {
 </div>
 
 ### Setup the build using Parcel Bundler
-Probably one of the most popular new build tools is Parcel Bundler. Is it really as fast and easy to configure as they promise? Lets find out by setting up our new project.
+Probably one of the most popular new build tools is Parcel Bundler. Is it really as fast and easy to configure as they promise? Let's find out by setting up our new project.
 
-One great feature of Parcel is that it supports an `index.html` as entry point. Using this HTML file, it automatically will bundle all references in that file. So when we create an `index.js` file and include it in the `index.html`, Parcel will also look in the `index.js` file and bundle all the required modules.
+One great feature of Parcel is that it supports an `index.html` as entry point. Using this HTML file, it automatically will bundle all references in that file. So, when we create an `index.js` file and include it in the `index.html`, Parcel will also look in the `index.js` file and bundle all the required modules.
 
-This will even work for TypeScript files! So we can easily include an `index.ts` file in the `index.html` and Parcel wil automatically compile TypeScript to JavaScript. TSX are also supported.
+This will even work for TypeScript files! So we can easily include an `index.ts` file in the `index.html` and Parcel will automatically compile TypeScript to JavaScript. TSX are also supported.
 
 `index.html`
 ```html
@@ -159,7 +161,7 @@ export const App = (props) =>
     </div>
 ```
 
-This all sounds great right? Almost no configuration and very powerful by default. Until you want to customize your build for more advanced usages. For example being able to import Markdown files. Therefore you have to install (or write your own) plugins.
+This all sounds great right? Almost no configuration and very powerful by default. Until you want to customize your build for more advanced usages. For example, being able to import Markdown files. Therefore, you have to install (or write your own) plugins.
 
 Every NPM dependency which name starts with `parcel-plugin-...` is recognized as Parcel plugin and enabled automatically. This makes it easy to extend but it is less transparent than a single configuration file.
 
@@ -172,15 +174,15 @@ Every NPM dependency which name starts with `parcel-plugin-...` is recognized as
 
 **What's nahsome about Parcel Bundler?**
 * Custom configuration requires (writing) a Parcel plugin
-* Losts of magic is going on in the background
+* Lots of magic is going on in the background
 * Relatively small community (still)
 * Have to prove itself future proof
 
 ### Takeaway
 You might have noticed that setting up a new project using Webpack 4 is more about writing configuration than actually writing your application code. Setting this up with Parcel actually begins with writing the application itself. Which makes you feel great as a developer because of the instant results you got!
 
-But which one is the winner? The new kid, Parcel, or the mature and experienced Webpack? Well, its not that simple.
+But which one is the winner? The new kid, Parcel, or the mature and experienced Webpack? Well, it's not that simple.
 
-Parcel is great to setup new projects fast. This can be very helpfull for R&D projects. It also might be a good fit to replace Webpack but it has to prove that it can evolve to be as mature as Webpack is today.
+Parcel is great to setup new projects fast. This can be very helpful for R&D projects. It also might be a good fit to replace Webpack but it has to prove that it can evolve to be as mature as Webpack is today.
 
-Webpack is the safe choice. Its been around for quite some years, has a large community and is very mature. The developer experience is maybe not as good as with Parcel, but the team is already working on Webpack 5 which looks very promising. Features as `Presets` and `CSS/HTML/File Module Types` should drastically improve the process of setting up a new application.
+Webpack is the safe choice. It's been around for quite some years, has a large community and is very mature. The developer experience is maybe not as good as with Parcel, but the team is already working on Webpack 5 which looks very promising. Features as `Presets` and `CSS/HTML/File Module Types` should drastically improve the process of setting up a new application.
