@@ -85,7 +85,7 @@ Findings:
 
 
 
-Bootstrapping a React Typescript project. What are the differences between Webpack 4 and Parcel Bundler?
+Findings of setting up a new TypeScript React project with Parcel Bundler versus Webpack 4
 
 Requirements for the new build setup
 - [ ] TypeScript
