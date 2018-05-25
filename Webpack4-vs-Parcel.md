@@ -42,7 +42,7 @@ The focus of the Webpack team for version 4 was mainly on performance and improv
 
 Since we want to build a slightly more advanced application, we still need to configure a lot of things to get it to work. This is a bit disappointing, because every project needs some CSS and images to look nice. It should be great if these basic requirements would work out-of-the-box.
 
-`Configuring loaders`
+**Configuring loaders**
 ```js
 rules: [
     {
@@ -73,7 +73,7 @@ rules: [
 
 For our requirements we need to set up the file loaders for TypeScript, CSS modules, Fonts and images in a `webpack.config.js` file. Unfortunately, we still need the `ExtractTextPlugin` to be able to bundle all the CSS to be able to bundle all the CSS of the application to a single file.
 
-`Configuring plugins`
+**Configuring plugins**
 ```js
 plugins: [
     new webpack.NamedModulesPlugin(),
@@ -84,7 +84,7 @@ plugins: [
 
 The last step in setting up the build is configuring the development server with Hot Module Reloading. This is also not included in the default Webpack configuration and requires some extra dependencies.
 
-`Configuring devserver`
+**Configuring devserver**
 ```js
 devServer: {
     contentBase: './dist',
@@ -94,14 +94,14 @@ devServer: {
 
 Even with the improved defaults of Webpack 4, setting up a new project is still quite a struggle. All the loaders and plugins are still needed and only a JavaScript loader is enabled by default. But this has also some benefits. You are very flexible in how you want to configure Webpack. And that is definitely the strength of Webpack.
 
-**What's awesome about Webpack 4?**
-* Almost anything is configurable
+#### What's awesome about Webpack 4?
+* Almost everything is configurable
 * Large community
 * Greatly improved compilation speed compared to v3
 * Well-funded & proven contributors
 * Improved default configuration
 
-**What's nahsome about Webpack 4?**
+#### What's nahsome about Webpack 4?
 * Almost everything is configurable (and needs to be configured)
 * Initial setup is still quite intensive
 * Basic stuff like CSS modules doesn't work out of the box
@@ -122,7 +122,7 @@ One great feature of Parcel is that it supports an `index.html` as entry point. 
 
 This will even work for TypeScript files! So we can easily include an `index.ts` file in the `index.html` and Parcel will automatically compile TypeScript to JavaScript. TSX are also supported.
 
-`index.html`
+**index.html**
 ```html
 <html>
 <head>
@@ -137,7 +137,7 @@ This will even work for TypeScript files! So we can easily include an `index.ts`
 
 For getting CSS modules to work with Parcel we need a little bit of configuration. Simply adding a `.postcss` file `{"modules": true}` in the root dir will do the trick.
 
-`index.ts`
+**index.ts**
 ```ts
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
@@ -150,7 +150,7 @@ ReactDOM.render(
 )
 ```
 
-`App.tsx`
+**App.tsx**
 ```tsx
 import * as React from 'react'
 import * as styles from './App.css'
@@ -165,14 +165,14 @@ This all sounds great right? Almost no configuration and very powerful by defaul
 
 Every NPM dependency which name starts with `parcel-plugin-...` is recognized as Parcel plugin and enabled automatically. This makes it easy to extend but it is less transparent than a single configuration file.
 
-**What's awesome about Parcel Bundler?**
+#### What's awesome about Parcel Bundler?
 * Very quick to setup
 * For most projects this is a plug-n-play solution
 * Development server is built-in
 * Very fast compile times
 * `index.html` as entry point
 
-**What's nahsome about Parcel Bundler?**
+#### What's nahsome about Parcel Bundler?
 * Custom configuration requires (writing) a Parcel plugin
 * Lots of magic is going on in the background
 * Relatively small community (still)
