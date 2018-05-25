@@ -22,76 +22,165 @@ Before going any further, lets determine some requirements for our application. 
 - TypeScript (TSX)
 - Being able to import:
     - JavaScript modules (obviously)
-    - (S)CSS Modules
+    - CSS Modules
     - Fonts
     - Images
 - Development server capabilities
 
 <div align="center">
-  <br>
-  <br>
-  <a href="https://github.com/webpack/webpack">
+    <br>
+    <br>
+    <a href="https://github.com/webpack/webpack">
     <img width="200" height="200" src="https://webpack.js.org/assets/icon-square-big.svg">
-  </a>
-  <br>
-  <br>
+    </a>
+    <br>
+    <br>
 </div>
 
-#### Setup the build using Webpack 4
-blabla
+### Setup the build using Webpack 4
+The focus of the Webpack team for version 4 was mainly on performance and improved default configuration. For example, Webpack runs in production mode by default. And for some JS-only projects it even works out-of-the-box without any configuration.
 
-* Create `webpack.config.js` file
-* Configure loaders for TypeScript, CSS modules, Fonts and images
-* Configure dist folder
-* Create an entry point `index.js`
-* For production build support we also need to configure source maps and `ExtractTextPlugin` to be able to bundle all the CSS
-* Configure dev server with HMR
-* Run `webpack`
-* Optional: create a `tsconfig.json` file for the TypeScript configuration
+Since we want to build a slightly more advanced application, we still need to configure a lot of things to get it to work. This is a bit disappointing, because every project needs some CSS and images to look nice. It should be great if these basic requirements would work out-of-the-box.
 
-**Pros**
+`Configuring loaders`
+```js
+rules: [
+    {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+    },
+    {
+        test: /\.css$/,
+        use: [
+            {
+                loader: "style-loader"
+            },
+            {
+                loader: "css-loader",
+                options: {
+                    modules: true,
+                    importLoaders: 1,
+                    localIdentName: "[name]_[local]_[hash:base64]",
+                    sourceMap: true,
+                    minimize: true
+                }
+            }
+        ]
+    }
+]
+```
+
+For our requirements we need to set up the file loaders for TypeScript, CSS modules, Fonts and images in a `webpack.config.js` file. Unfortunately we still need the `ExtractTextPlugin` to be able to bundle all the CSS to be able to bundle all the CSS of the application to a single file.
+
+`Configuring plugins`
+```js
+plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.ExtractTextPlugin()
+]
+```
+
+The last step in setting up the build is configuring the development server with Hot Module Reloading. This is also not included in the default Webpack configuration and requires some extra dependencies.
+
+`Configuring devserver`
+```js
+devServer: {
+    contentBase: './dist',
+    hot: true
+}
+```
+
+**What's awesome about Webpack 4?**
 * Almost anything is configurable
 * Large community
 * Greatly improved compilation speed compared to v3
 * Well-funded & proven contributors
+* Improved default configuration
 
-**Cons**
+**Whats nahsome about Webpack 4?**
 * Almost everything is configurable (and needs to be configured)
-* Initial setup is quite intensive
+* Initial setup is still quite intensive
 * Basic stuff like CSS modules doesn't work out of the box
 * Not all documentation and plugins are ready for v4
 
 <div align="center">
-<br>
-<br>
-<img alt="Parcel" src="https://user-images.githubusercontent.com/19409/31321658-f6aed0f2-ac3d-11e7-8100-1587e676e0ec.png" width="749">
-<br>
-<br>
+    <br>
+    <br>
+    <img alt="Parcel" src="https://user-images.githubusercontent.com/19409/31321658-f6aed0f2-ac3d-11e7-8100-1587e676e0ec.png" width="749">
+    <br>
+    <br>
 </div>
 
-#### Setup the build using Parcel Bundler
-blabla
+### Setup the build using Parcel Bundler
+Probably one of the most popular new build tools is Parcel Bundler. Is it really as fast and easy to configure as they promise? Lets find out by setting up our new project.
 
-* Create `.postcss` file `{"modules": true}` in the root dir
-* Create an entry point `index.js` / `index.html`
-* run `parcel <entry-point>`
-* Optional: create a `tsconfig.json` file for the TypeScript configuration
+One great feature of Parcel is that it supports an `index.html` as entry point. Using this HTML file, it automatically will bundle all references in that file. So when we create an `index.js` file and include it in the `index.html`, Parcel will also look in the `index.js` file and bundle all the required modules.
 
-**Pros**
+This will even work for TypeScript files! So we can easily include an `index.ts` file in the `index.html` and Parcel wil automatically compile TypeScript to JavaScript. TSX are also supported.
+
+`index.html`
+```html
+<html>
+<head>
+    <title>React Parcel TypeScript Example</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="index.ts"></script>
+</body>
+</html>
+```
+
+For getting CSS modules to work with Parcel we need a little bit of configuration. Simply adding a `.postcss` file `{"modules": true}` in the root dir will do the trick.
+
+`index.ts`
+```ts
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+
+import { AppContainer } from './containers/App'
+
+ReactDOM.render(
+  <App/>,
+  document.getElementById('root')
+)
+```
+
+`App.tsx`
+```tsx
+import * as React from 'react'
+import * as styles from './App.css'
+
+export const App = (props) =>
+    <div className={styles.app}>
+        {props.children}
+    </div>
+```
+
+This all sounds great right? Almost no configuration and very powerful by default. Until you want to customize your build for more advanced usages. For example being able to import Markdown files. Therefore you have to install (or write your own) plugins.
+
+Every NPM dependency which name starts with `parcel-plugin-...` is recognized as Parcel plugin and enabled automatically. This makes it easy to extend but it is less transparent than a single configuration file.
+
+**What's awesome about Parcel Bundler?**
 * Very quick to setup
 * For most projects this is a plug-n-play solution
-* Built in dev server
+* Development server is built-in
 * Very fast compile times
 * `index.html` as entry point
 
-**Cons**
-* Configuration / cusomization is required to write a plugin
+**What's nahsome about Parcel Bundler?**
+* Custom configuration requires (writing) a Parcel plugin
 * Losts of magic is going on in the background
-* Small community still
+* Relatively small community (still)
 * Have to prove itself future proof
 
 ### Takeaway
-webpack -> safe choice, less risks
+You might have noticed that setting up a new project using Webpack 4 is more about writing configuration than actually writing your application code. Setting this up with Parcel actually begins with writing the application itself. Which makes you feel great as a developer because of the instant results you got!
 
+But which one is the winner? The new kid, Parcel, or the mature and experienced Webpack? Well, its not that simple.
 
-Parcel is great to setup new projects fast. This can be very helpfull for R&D or PoC purposes. It might be a good fit to replace Webpack but it has to prove that it can survive next to Webpack. At least until Webpack 5 is released, there is a much better developer experience with Parcel than with Webpack. But Webpack 5 will have a lot more features that will enable 0CJS like built-in support for CSS modules.
+Parcel is great to setup new projects fast. This can be very helpfull for R&D projects. It also might be a good fit to replace Webpack but it has to prove that it can evolve to be as mature as Webpack is today.
+
+Webpack is the safe choice. Its been around for quite some years, has a large community and is very mature. The developer experience is maybe not as good as with Parcel, but the team is already working on Webpack 5 which looks very promising. Features as `Presets` and `CSS/HTML/File Module Types` should drastically improve the process of setting up a new application.
