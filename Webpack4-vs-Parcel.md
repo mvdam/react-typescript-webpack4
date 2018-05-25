@@ -120,7 +120,7 @@ Probably one of the most popular new build tools is Parcel Bundler. Is it really
 
 One great feature of Parcel is that it supports an `index.html` as entry point. Using this HTML file, it automatically will bundle all references in that file. So, when we create an `index.js` file and include it in the `index.html`, Parcel will also look in the `index.js` file and bundle all the required modules.
 
-This will even work for TypeScript files! So we can easily include an `index.ts` file in the `index.html` and Parcel will automatically compile TypeScript to JavaScript. TSX are also supported.
+This will even work for TypeScript files! So we can easily include an `index.ts` file in the `index.html` and Parcel will automatically compile TypeScript to JavaScript. TSX files are also supported.
 
 *index.html:*
 ```html
@@ -142,7 +142,7 @@ For getting CSS modules to work with Parcel we need a little bit of configuratio
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
-import { AppContainer } from './containers/App'
+import { App } from './containers/App'
 
 ReactDOM.render(
   <App/>,
