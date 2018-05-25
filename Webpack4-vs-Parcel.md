@@ -1,7 +1,7 @@
 https://medium.com/codestar-blog
 https://medium.com/@mvdam
 
-# ️Parcel Bundler vs. Webpack 4 ⚔️️
+# Parcel Bundler vs. Webpack 4 ⚔️️
 > Setting up a fresh TypeScript React project
 
 Starting up a new frontend project can be quite intensive. Most time will vanish in setting up the build process. We all know the pains of setting up Webpack with loaders and configuration files.
