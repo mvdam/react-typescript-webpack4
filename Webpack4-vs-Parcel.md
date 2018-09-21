@@ -6,7 +6,7 @@ https://medium.com/@mvdam
 
 Starting up a new frontend project can be quite intensive. Most time will vanish in setting up the build process. We all know the pains of setting up Webpack with loaders and configuration files.
 
-But things might have changed. We have two -new- kids on the block;
+But things might have changed. We have two (relatively) new kids on the block;
 
 * [Parcel Bundler](https://github.com/parcel-bundler/parcel), released December 2017
 * [Webpack 4](https://github.com/webpack/webpack), released on February 2018
@@ -14,10 +14,10 @@ But things might have changed. We have two -new- kids on the block;
 ## #0CJS
 There is quite some fuzz around 0CJS (Zero Configuration JavaScript) lately. It's all about great developer experience. This makes perfect sense for setting up build tools like Parcel or Webpack. For more advanced projects it may take huge effort to set it up correctly.
 
-Parcel claims to be a Blazing fast, zero configuration web application bundler. That all sounds nice, but does it really work out of the box? And how does Webpack 4 compares to Parcel?
+Parcel claims to be a blazing fast, zero configuration web application bundler. That all sounds nice, but does it really work out of the box? And how does Webpack 4 compare to Parcel?
 
 ## App requirements
-Before going any further, let's determine some requirements for our application. For a professional web application, we should at least have support for the following technology.
+Before going any further, let's determine some requirements for our application. For a professional web application we might want to have support for the following technology.
 - React
 - TypeScript (TSX)
 - Being able to import:
@@ -71,7 +71,7 @@ rules: [
 ]
 ```
 
-For our requirements we need to set up the file loaders for TypeScript, CSS modules, Fonts and images in a `webpack.config.js` file. Unfortunately, we still need the `ExtractTextPlugin` to be able to bundle all the CSS to be able to bundle all the CSS of the application to a single file.
+For our requirements we need to set up the file loaders for TypeScript, CSS modules, Fonts and images in a `webpack.config.js` file. Unfortunately, we still need the `ExtractTextPlugin` to be able to bundle all the CSS of the application to a single file.
 
 *Configuring plugins:*
 ```js
@@ -97,7 +97,7 @@ Even with the improved defaults of Webpack 4, setting up a new project is still 
 ### What's awesome about Webpack 4?
 * Almost everything is configurable
 * Large community
-* Greatly improved compilation speed compared to v3
+* Greatly improved compilation speed compared to v3 ([source](https://medium.com/webpack/webpack-4-released-today-6cdb994702d4))
 * Well-funded & proven contributors
 * Improved default configuration
 
@@ -169,7 +169,7 @@ Every NPM dependency which name starts with `parcel-plugin-...` is recognized as
 * Very quick to setup
 * For most projects this is a plug-n-play solution
 * Development server is built-in
-* Very fast compile times
+* Very fast compile times ([source](https://github.com/parcel-bundler/parcel#benchmarks))
 * `index.html` as entry point
 
 ### What's nahsome about Parcel Bundler?
@@ -183,7 +183,7 @@ You might have noticed that setting up a new project using Webpack 4 is more abo
 
 But which one is the winner? The new kid, Parcel, or the mature and experienced Webpack? Well, it's not that simple.
 
-Parcel is great to setup new projects fast. This can be very helpful for R&D or pet-projects. It might be a good fit to replace Webpack with Parcel, but it has to prove that it can evolve to be as mature as Webpack is today.
+Parcel is great to set up new projects fast. This can be very helpful for R&D or pet-projects. It might be a good fit to replace Webpack with Parcel, but it has to prove that it can evolve to be as mature as Webpack is today.
 
 Webpack is the safe choice. It has been around for quite some years, has a large community and is very mature. The flexibility makes it perfect for large projects that needs advanced configuration.
-The developer experience is maybe not as good as with Parcel, but the team is already working on Webpack 5 which looks very promising. Features as `Presets` and `CSS/HTML/File Module Types` should drastically improve the process of setting up a new application.
+The developer experience may not be as good as with Parcel, but the team is already working on Webpack 5 which looks very promising. Features as `Presets` and `CSS/HTML/File Module Types` should drastically improve the process of setting up a new application.
